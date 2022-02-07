@@ -1,11 +1,18 @@
 package br.com.workshop.framework.adapter.out.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "contact_mediums")
-public class ContactMedium {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ContactMediumEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,6 +25,6 @@ public class ContactMedium {
     private LocalDateTime lastUpdate;
 
     @ManyToOne
-    private Customer customer;
+    private CustomerEntity customer;
 
 }

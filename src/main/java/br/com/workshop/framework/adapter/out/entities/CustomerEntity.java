@@ -1,5 +1,9 @@
 package br.com.workshop.framework.adapter.out.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -7,7 +11,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "customers")
-public class Customer {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class CustomerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,9 +29,9 @@ public class Customer {
     private LocalDate inactive;
 
     @OneToMany(mappedBy = "customer")
-    private List<Address> addresses;
+    private List<AddressEntity> addressEntities;
 
     @OneToMany(mappedBy = "customer")
-    private List<ContactMedium> contacts;
+    private List<ContactMediumEntity> contacts;
 
 }
