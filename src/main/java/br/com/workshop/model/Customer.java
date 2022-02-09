@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -14,4 +15,6 @@ public class Customer {
     private LocalDate birthdate;
     private String documentNumber;
     private String documentType;
+    private List<Address> addresses;
+    private List<ContactMedium> contacts;
 }
