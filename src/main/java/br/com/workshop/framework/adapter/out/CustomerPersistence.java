@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Component
@@ -56,6 +57,8 @@ public class CustomerPersistence implements CustomerPersistencePortOut {
 
     @Override
     public void delete(Integer id) {
-        repository.deleteById(id);
+        if (Objects.nonNull(findById(id))) {
+            repository.deleteById(id);
+        }
     }
 }
