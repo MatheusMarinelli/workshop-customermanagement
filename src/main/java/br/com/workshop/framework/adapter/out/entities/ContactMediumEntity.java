@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class ContactMediumEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String emailAddress;

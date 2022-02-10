@@ -44,6 +44,17 @@ public class CustomerPersistence implements CustomerPersistencePortOut {
         entity.setCreation(LocalDateTime.now());
         entity.setLastUpdate(LocalDateTime.now());
         entity.setInactive(LocalDate.now());
+        entity.getAddresses().forEach(address -> {
+            address.setCreation(LocalDateTime.now());
+            address.setLastUpdate(LocalDateTime.now());
+            address.setCustomer(entity);
+        });
+        entity.getContacts().forEach(contact -> {
+            contact.setCreation(LocalDateTime.now());
+            contact.setLastUpdate(LocalDateTime.now());
+            contact.setCustomer(entity);
+        });
+
         return mapper.map(repository.save(entity),Customer.class);
     }
 

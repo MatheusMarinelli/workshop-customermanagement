@@ -17,7 +17,7 @@ import java.util.List;
 public class CustomerEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name;
@@ -28,10 +28,10 @@ public class CustomerEntity {
     private LocalDateTime lastUpdate;
     private LocalDate inactive;
 
-    @OneToMany(mappedBy = "customer")
-    private List<AddressEntity> addressEntities;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<AddressEntity> addresses;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<ContactMediumEntity> contacts;
 
 }
