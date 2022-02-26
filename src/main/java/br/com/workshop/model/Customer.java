@@ -11,10 +11,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Customer {
+    private Integer id;
     private String name;
     private LocalDate birthdate;
     private String documentNumber;
     private String documentType;
+    private LocalDate inactive;
     private List<Address> addresses;
     private List<ContactMedium> contacts;
 }

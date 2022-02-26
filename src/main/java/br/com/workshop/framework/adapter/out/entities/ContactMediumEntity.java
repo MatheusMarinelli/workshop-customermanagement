@@ -25,6 +25,7 @@ public class ContactMediumEntity {
     private LocalDateTime lastUpdate;
 
     @ManyToOne
+    @JoinColumn(name = "CUSTOMER_ID")
     private CustomerEntity customer;
 
 }
