@@ -4,8 +4,7 @@ import br.com.workshop.application.port.out.AddressPersistencePortOut;
 import br.com.workshop.framework.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class AddressPersistence implements AddressPersistencePortOut {
