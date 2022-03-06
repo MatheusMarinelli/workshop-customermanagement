@@ -20,3 +20,10 @@ springdoc:
     path: /api-docs
   swagger-ui:
     operationsSorter: method
+
+management:
+  endpoints:
+    web:
+      base-path: "/"
+      path-mapping:
+        health: "healthcheck"
