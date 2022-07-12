@@ -30,16 +30,16 @@ public class CustomerPersistence implements CustomerPersistencePortOut {
     }
 
     @Override
-    public Customer findById(Integer id) {
+    public CustomerEntity findById(String id) {
         Optional<CustomerEntity> entity = repository.findById(id);
         if (entity.isPresent()) {
-            return mapper.map(entity.get(),Customer.class);
+            return entity.get();
         }
         throw new CustomerNotFoundException("Customer not found with id: " + id);
     }
 
     @Override
-    public Customer insert(Customer customer) {
+    public CustomerEntity insert(Customer customer) {
         CustomerEntity entity = mapper.map(customer, CustomerEntity.class);
         entity.setCreation(LocalDateTime.now());
         entity.setLastUpdate(LocalDateTime.now());
@@ -47,42 +47,38 @@ public class CustomerPersistence implements CustomerPersistencePortOut {
         entity.getAddresses().forEach(address -> {
             address.setCreation(LocalDateTime.now());
             address.setLastUpdate(LocalDateTime.now());
-            address.setCustomer(entity);
         });
         entity.getContacts().forEach(contact -> {
             contact.setCreation(LocalDateTime.now());
             contact.setLastUpdate(LocalDateTime.now());
-            contact.setCustomer(entity);
         });
 
-        return mapper.map(repository.save(entity),Customer.class);
+        return repository.save(entity);
     }
 
     @Override
-    public void update(Integer id, Customer customer) {
+    public void update(String id, CustomerEntity customer) {
         CustomerEntity entity = mapper.map(customer, CustomerEntity.class);
 
         entity.setId(id);
-        entity.setCreation(repository.findCreationDateById(id));
+        entity.setCreation(customer.getCreation());
         entity.setLastUpdate(LocalDateTime.now());
 
         entity.getAddresses().forEach(address -> {
             address.setCreation(LocalDateTime.now());
             address.setLastUpdate(LocalDateTime.now());
-            address.setCustomer(entity);
         });
 
         entity.getContacts().forEach(contact -> {
             contact.setCreation(LocalDateTime.now());
             contact.setLastUpdate(LocalDateTime.now());
-            contact.setCustomer(entity);
         });
 
         repository.save(entity);
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
         if (Objects.nonNull(findById(id))) {
             repository.deleteById(id);
         }

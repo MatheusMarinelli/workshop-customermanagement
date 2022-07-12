@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class CustomerOutDTO {
 
-    private Integer id;
+    private String id;
     private String name;
     private LocalDate birthdate;
     private String documentNumber;

@@ -4,19 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "addresses")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AddressEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class AddressEntity implements Serializable {
 
     private String city;
     private String country;
@@ -26,9 +20,5 @@ public class AddressEntity {
     private String streetNumber;
     private LocalDateTime creation;
     private LocalDateTime lastUpdate;
-
-    @ManyToOne
-    @JoinColumn(name = "CUSTOMER_ID")
-    private CustomerEntity customer;
 
 }

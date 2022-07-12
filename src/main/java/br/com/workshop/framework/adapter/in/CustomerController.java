@@ -27,7 +27,7 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> findById(@PathVariable Integer id) {
+    public ResponseEntity<Customer> findById(@PathVariable String id) {
         return ResponseEntity.ok(useCase.findById(id));
     }
 
@@ -38,13 +38,13 @@ public class CustomerController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Void> update(@PathVariable Integer id, @RequestBody Customer customer) {
+    public ResponseEntity<Void> update(@PathVariable String id, @RequestBody Customer customer) {
         useCase.update(id,customer);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable String id) {
         useCase.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

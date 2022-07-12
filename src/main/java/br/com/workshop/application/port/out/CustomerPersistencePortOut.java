@@ -1,5 +1,6 @@
 package br.com.workshop.application.port.out;
 
+import br.com.workshop.framework.adapter.out.entities.CustomerEntity;
 import br.com.workshop.model.Customer;
 
 import java.util.List;
@@ -7,9 +8,9 @@ import java.util.List;
 public interface CustomerPersistencePortOut {
 
     List<Customer> findAll();
-    Customer findById(Integer id);
-    Customer insert(Customer customer);
-    void update(Integer id, Customer customer);
-    void delete(Integer id);
+    CustomerEntity findById(String id);
+    CustomerEntity insert(Customer customer);
+    void update(String id, CustomerEntity customer);
+    void delete(String id);
 
 }

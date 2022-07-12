@@ -8,10 +8,10 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Customer {
-    private Integer id;
+    private String id;
     private String name;
     private LocalDate birthdate;
     private String documentNumber;

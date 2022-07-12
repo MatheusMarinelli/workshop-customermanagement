@@ -4,28 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "contact_mediums")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ContactMediumEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class ContactMediumEntity implements Serializable {
 
     private String emailAddress;
     private String phoneNumber;
     private Boolean preferred;
     private LocalDateTime creation;
     private LocalDateTime lastUpdate;
-
-    @ManyToOne
-    @JoinColumn(name = "CUSTOMER_ID")
-    private CustomerEntity customer;
 
 }
